@@ -4,8 +4,8 @@ void main(){
   while(true){
     print("press 1 to add task");
     print("press 2 to view all tasks");
-    print("press 3 to view only completed tasks");
-    print("press 4 to view only pending tasks");
+    print("press 3 to view completed tasks");
+    print("press 4 to view pending tasks");
     print("press 5 to edit a task");
     print("press 6 to delete a task");
     print("press 7 to complete a task");
