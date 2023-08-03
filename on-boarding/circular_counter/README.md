@@ -1,7 +1,8 @@
 # Circular Counter App
 
 A new Flutter project.
-<img src="https://github.com/dawit-melka/2023-project-phase-mobile-tasks/blob/main/assets/105089130/5ab5c583-c8c4-4aff-9227-76c50b62c72f.png" alt="Image Description" width="50%" />
+![image](https://github.com/dawit-melka/2023-project-phase-mobile-tasks/assets/105089130/baa77a38-16e6-4843-a219-7e3618f7459c)
+
 
 ##Circular Counter Logic
 The Circular Counter App features a unique counter logic that ensures the counter value remains within a circular range of 0 to 10. This innovative approach adds a delightful touch to the user experience and eliminates any concerns about exceeding the limit.
