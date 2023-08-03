@@ -2,7 +2,7 @@
 
 A Flutter project.
 
-<img width="50%" src="https://github.com/dawit-melka/2023-project-phase-mobile-tasks/assets/105089130/baa77a38-16e6-4843-a219-7e3618f7459c">
+<img width="200" height="500" src="https://github.com/dawit-melka/2023-project-phase-mobile-tasks/assets/105089130/baa77a38-16e6-4843-a219-7e3618f7459c">
 
 
 ## Circular Counter Logic
