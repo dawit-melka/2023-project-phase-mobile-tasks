@@ -7,8 +7,7 @@ Description: You are tasked with implementing a user interface in Flutter that r
 
 <img width="200" height="450" src="https://github.com/dawit-melka/2023-project-phase-mobile-tasks/assets/105089130/88995c71-b1c6-422e-80bc-a5fc8475a6da">
 
-<img width="200" height="450" src="https://github.com/dawit-melka/2023-project-phase-mobile-tasks/assets/105089130/04252c25-5e97-483d-ba47-e787658bf9a0">
-
+<img width="200" height="450" src="https://github.com/dawit-melka/2023-project-phase-mobile-tasks/assets/105089130/3bec09f0-4eac-45e4-a362-868bdc996222">
 
 
 ## Result
