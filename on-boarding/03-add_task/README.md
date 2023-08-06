@@ -1,16 +1,18 @@
-# add_task_app
+# Task : Implementing a Flutter User Interface
+## Objective:
+Create a Flutter user interface that replicates the design of a provided picture.
 
-A new Flutter project.
+## Task:
+Description: You are tasked with implementing a user interface in Flutter that replicates the design of the provided picture. The picture will serve as a reference for the visual appearance and layout of the user interface you need to create.
 
-## Getting Started
+<img width="200" height="450" src="https://github.com/dawit-melka/2023-project-phase-mobile-tasks/assets/105089130/88995c71-b1c6-422e-80bc-a5fc8475a6da">
 
-This project is a starting point for a Flutter application.
+<img width="200" height="450" src="https://github.com/dawit-melka/2023-project-phase-mobile-tasks/assets/105089130/3bec09f0-4eac-45e4-a362-868bdc996222">
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Result
+<img width="200" height="450" src="https://github.com/dawit-melka/2023-project-phase-mobile-tasks/assets/105089130/326f8319-5a79-4d42-a276-22ebe58fa838">
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+<img width="200" height="450" src="https://github.com/dawit-melka/2023-project-phase-mobile-tasks/assets/105089130/2251c13b-d69c-470b-8c05-734b8513420e">
+
