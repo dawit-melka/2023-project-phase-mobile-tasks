@@ -26,12 +26,16 @@ cd todo-mobile-app
 3. Ensure you have Flutter and Dart installed on your machine.
 
 4. Run the app on an emulator or physical device:
-`flutter run`
+```
+flutter run
+```
 ## Named Routes and Navigation
 The app uses named routes for navigation between screens. This approach provides a cleaner and more organized way to handle routing within the app.
 
 ### Example of Using Named Routes:
-`Navigator.pushNamed(context, '/add-task');`
+```
+Navigator.pushNamed(context, '/add-task');
+```
 ### Passing Data Between Screens
 When adding or editing a task, the user's input is passed between screens using the navigation arguments feature. This ensures that the task data is displayed accurately and consistently throughout the app.
 
