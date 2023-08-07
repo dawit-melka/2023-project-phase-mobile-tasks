@@ -2,36 +2,13 @@
 
 This project includes widget tests for the To-Do app user interface to ensure UI components and user interactions work correctly. Widget testing is used to verify app stability during changes or feature additions.
 
-## Getting Started
 
-Follow the steps below to set up and run widget tests for the To-Do app.
+## Running Widget Tests
 
 ### Prerequisites
 
 - Flutter SDK installed
 - Emulator or physical device for testing
-
-### Installation
-
-1. Clone the repository to your local machine:
-
-```bash
-git clone <repository_url>
-```
-
-2. Navigate to the project directory:
-
-```bash
-cd <project_directory>
-```
-
-3. Install dependencies:
-
-```bash
-flutter pub get
-```
-
-## Running Widget Tests
 
 Run widget tests to ensure the correctness of the To-Do app UI and functionality.
 
@@ -118,7 +95,7 @@ testWidgets('Navigate to main page from onboarding', (WidgetTester tester) async
 
 ## Test Files
 
-- `test\todo_app_test.dart`: Contains the widget tests for various app functionalities.
-- `create_new_task.dart`: Defines the `CreateNewTask` screen.
-- `get_started.dart`: Defines the `GetStartedPage` screen.
-- `models.dart`: Defines the `Task` class for task data.
+- [`test\todo_app_test.dart`](https://github.com/dawit-melka/2023-project-phase-mobile-tasks/blob/main/on-boarding/06-todo_mobile_app_widget_testing/test/todo_app_test.dart): Contains the widget tests for various app functionalities. 
+- [`create_new_task.dart`](https://github.com/dawit-melka/2023-project-phase-mobile-tasks/blob/main/on-boarding/06-todo_mobile_app_widget_testing/lib/screens/create_new_task.dart): Defines the `CreateNewTask` screen.
+- [`get_started.dart`](https://github.com/dawit-melka/2023-project-phase-mobile-tasks/blob/main/on-boarding/06-todo_mobile_app_widget_testing/lib/screens/get_started.dart): Defines the `GetStartedPage` screen.
+- [`models.dart`](https://github.com/dawit-melka/2023-project-phase-mobile-tasks/blob/main/on-boarding/06-todo_mobile_app_widget_testing/lib/models/models.dart): Defines the `Task` class for task data.
