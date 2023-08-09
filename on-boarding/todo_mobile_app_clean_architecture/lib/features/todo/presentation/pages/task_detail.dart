@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:todo_mobile_app_clean_architecture/features/todo/domain/entities/task.dart';
 import 'package:todo_mobile_app_clean_architecture/features/todo/presentation/pages/todo_list.dart';
 
 

@@ -1,4 +1,5 @@
-import 'dart:convert';
+// import 'dart:convert';
+
 
 class Task {
   final String id;
@@ -15,29 +16,30 @@ class Task {
     this.status = false,
     });
 
-  Map<String, dynamic> toMap() {
-    final result = <String, dynamic>{};
+
+  // Map<String, dynamic> toMap() {
+  //   final result = <String, dynamic>{};
   
-    result.addAll({'id': id});
-    result.addAll({'title': title});
-    result.addAll({'description': description});
-    result.addAll({'deadline': deadline});
-    result.addAll({'status': status});
+  //   result.addAll({'id': id});
+  //   result.addAll({'title': title});
+  //   result.addAll({'description': description});
+  //   result.addAll({'deadline': deadline});
+  //   result.addAll({'status': status});
   
-    return result;
-  }
+  //   return result;
+  // }
 
-  factory Task.fromMap(Map<String, dynamic> map) {
-    return Task(
-      id: map['id'] ?? '',
-      title: map['title'] ?? '',
-      description: map['description'] ?? '',
-      deadline: map['deadline'] ?? '',
-      status: map['status'] ?? false,
-    );
-  }
+  // factory Task.fromMap(Map<String, dynamic> map) {
+  //   return Task(
+  //     id: map['id'] ?? '',
+  //     title: map['title'] ?? '',
+  //     description: map['description'] ?? '',
+  //     deadline: map['deadline'] ?? '',
+  //     status: map['status'] ?? false,
+  //   );
+  // }
 
-  String toJson() => json.encode(toMap());
+  // String toJson() => json.encode(toMap());
 
-  factory Task.fromJson(String source) => Task.fromMap(json.decode(source));
+  // factory Task.fromJson(String source) => Task.fromMap(json.decode(source));
 }
