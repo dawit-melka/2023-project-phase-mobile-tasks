@@ -1,24 +1,93 @@
-<<<<<<< HEAD
-# todo_mobile_app_clean_architecture
+# [Day 8 - Task 1] Task Document: Data Overview Layer
 
-A new Flutter project.
+## Unit Tests for Task Entity
 
-## Getting Started
+In this task, unit tests were implemented to ensure the correctness of the `Task` entity. The entity contains attributes such as `id`, `title`, `description`, `deadline`, and `status`. The tests validate the behavior of the `Task` entity constructor and its attributes.
 
-This project is a starting point for a Flutter application.
+```dart
+test('Task entity should be correctly initialized', () {
+  final task = Task(
+    id: '1',
+    title: 'Test Task',
+    description: 'This is a test task',
+    deadline: '2023-08-10',
+    status: false,
+  );
 
-A few resources to get you started if this is your first Flutter project:
+  expect(task.id, '1');
+  expect(task.title, 'Test Task');
+  expect(task.description, 'This is a test task');
+  expect(task.deadline, '2023-08-10');
+  expect(task.status, false);
+});
+```
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Unit Tests for ViewAllTasksUseCase
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-=======
+In this task, unit tests were written for the `ViewAllTasksUseCase` class. The use case is responsible for retrieving a list of all tasks. The tests ensure that the use case interacts correctly with the repository and returns the expected result.
+
+```dart
+test('ViewAllTasksUseCase should return a list of tasks', () async {
+  final mockRepository = MockTodoRepository(); // Create a mock repository
+  final useCase = ViewAllTasksUseCase(repository: mockRepository);
+
+  when(mockRepository.getAllTasks())
+      .thenAnswer((_) async => Right([Task(id: '1', title: 'Task 1')]));
+
+  final result = await useCase(); // Call the use case
+
+  expect(result, isA<Right>());
+  expect(result.getOrElse(() => []), [Task(id: '1', title: 'Task 1')]);
+});
+```
+
+## Implement Models
+
+In this task, models were implemented in the `features/todo/data/models` directory. The `TaskModel` class mirrors the `Task` entity and includes conversion logic to and from JSON using `fromJson` and `toJson` methods. Unit tests were written to ensure the correctness of the `TaskModel` class.
+
+```dart
+class TaskModel {
+  final String id;
+  final String title;
+  final String description;
+  final String deadline;
+  final bool status;
+
+  TaskModel({
+    required this.id,
+    required this.title,
+    required this.description,
+    required this.deadline,
+    this.status = false,
+  });
+
+  factory TaskModel.fromJson(Map<String, dynamic> json) {
+    return TaskModel(
+      id: json['id'],
+      title: json['title'],
+      description: json['description'],
+      deadline: json['deadline'],
+      status: json['status'] ?? false,
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'title': title,
+      'description': description,
+      'deadline': deadline,
+      'status': status,
+    };
+  }
+}
+```
+
+
+
 # [Day 7 - Task 2] To-Do App: Domain Layer Refactoring
-<!-- <details> -->
-<!--   <summary>Entities</summary> -->
+<details>
+<summary>Click To Expand</summary>
   
 In this task, I have successfully completed the domain layer refactoring for the To-Do App. The goal of this task was to implement entities and use cases to enable the functionality of viewing all tasks, viewing a specific task, and creating a new task.
 
@@ -110,5 +179,4 @@ class CreateTaskUseCase implements UseCase<Task, Params<Task>> {
   }
 }
 ```
-<!-- </details> -->
->>>>>>> d0d4178fcd9a34f8022fcc375da6094194de32e8
+</details>
