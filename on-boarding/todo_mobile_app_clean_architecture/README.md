@@ -1,6 +1,6 @@
 # [Day 7 - Task 2] To-Do App: Domain Layer Refactoring
-<details>
-  <summary>Entities</summary>
+<!-- <details> -->
+<!--   <summary>Entities</summary> -->
   
 In this task, I have successfully completed the domain layer refactoring for the To-Do App. The goal of this task was to implement entities and use cases to enable the functionality of viewing all tasks, viewing a specific task, and creating a new task.
 
@@ -92,4 +92,4 @@ class CreateTaskUseCase implements UseCase<Task, Params<Task>> {
   }
 }
 ```
-</details>
+<!-- </details> -->
