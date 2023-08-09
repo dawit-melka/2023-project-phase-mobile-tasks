@@ -1,117 +1,95 @@
-<<<<<<< HEAD:on-boarding/todo_mobile_app_clean_architecture/README.md
-# todo_mobile_app_clean_architecture
-=======
-# Todo Mobile App - Clean Architecture and Feature Enhancements
->>>>>>> bce5c50448fd731f8543287da9dc24227d415c00:on-boarding/07-todo_app_clean_architecture/README.md
+#[Day 7 - Task 2] To-Do App: Domain Layer Refactoring
+<details>
+  <summary>Click to expand</summary>
+  
+In this task, I have successfully completed the domain layer refactoring for the To-Do App. The goal of this task was to implement entities and use cases to enable the functionality of viewing all tasks, viewing a specific task, and creating a new task.
 
-This project extends the existing Todo Mobile App by implementing new features and improving functionality using Clean Architecture principles and Test-Driven Development (TDD) practices. The app allows users to manage tasks, set due dates, mark tasks as completed, and provides better error handling. The codebase has been organized into distinct layers to improve maintainability and code quality.
+## Updates Made
 
-## Features Implemented
+### Entities
 
-### 1. Set Due Date Feature
-
-Users can now set due dates for tasks when creating or editing them. The due dates are displayed in both the task list and task details screens.
-
-![image](https://github.com/dawit-melka/2023-project-phase-mobile-tasks/assets/105089130/6529ec70-cd7a-47ae-9606-659cb63d4c8d)
-
-
-### 2. Mark Task as Completed Feature
-
-A new button has been added to allow users to mark tasks as completed. Completed tasks are visually differentiated from active tasks in the task list.
-
-![image](https://github.com/dawit-melka/2023-project-phase-mobile-tasks/assets/105089130/1847c2f5-1de6-44f5-9eee-64166e8836d4)
-
-### 3. Clean Architecture Organization
-
-The codebase has been restructured into the following distinct layers, adhering to Clean Architecture principles:
-
-- **Presentation Layer:** Contains UI components, screens, and presentation logic.
-- **Domain Layer:** Holds the core business logic, including use cases and entities.
-- **Data Layer:** Manages data sources and repositories for fetching and storing data.
-
-## Folder Structure (Clean Architecture)
-
-```
-lib/
-|-- data/
-|   |-- datasources/
-|   |   |-- remote_data_source.dart
-|   |
-|   |-- repositories/
-|   |   |-- todo_repository_impl.dart
-|   |
-|
-|-- domain/
-|   |-- entities/
-|   |   |-- todo.dart
-|   |
-|   |-- repositories/
-|   |   |-- todo_repository.dart
-|   |
-|   |-- usecases/
-|   |   |-- add.dart
-|   |   |-- delete.dart
-|   |   |-- list.dart
-|   |   |-- complete.dart
-|
-|-- presentation/
-|   |-- pages/
-|   |   |-- get_started.dart
-|   |   |-- todo_list.dart
-|   |   |-- task_detail.dart
-|   |   |-- create_new_task.dart
-|
-|-- shared/
-|   |-- errors/
-|   |   |-- failure.dart
-|   |-- utils/
-|   |   |-- useCase.dart
-|
-|-- main.dart
-|-- ... (other files)
-```
-
-## `Todo` Entity
-
-The `Todo` entity represents a task in the app. It contains the following attributes:
-
-- `id`: Unique identifier for the task.
-- `title`: Title of the task.
-- `description`: Description of the task.
-- `dueDate`: Due date for the task.
+I created an entity class named `Task` that represents a single to-do task. Each task includes the following attributes:
+- id: The unique identifier of the task.
+- title: The title of the task.
+- description: The description of the task.
+- dueDate: The deadline for the task.
 
 ```dart
-class Todo {
+class Task {
   final String id;
   final String title;
   final String description;
   final String dueDate;
+  final bool status;
 
-  Todo({
-    required this.id, 
-    required this.title, 
-    required this.description, 
-    required this.dueDate
+  Task({
+    required this.id,
+    required this.title,
+    required this.description,
+    required this.dueDate,
+    this.status = false,
   });
 }
 ```
 
-## Error Handling and Either Type
+### Use Cases
 
-Proper error handling has been implemented for scenarios such as failed API calls or data retrieval errors. The `Either<L, R>` type is used to manage both successful results and failures in the app. A `Failure` class is used to encapsulate error messages.
+I implemented the following use cases using callable classes:
 
-Example Use Case:
+#### View All Tasks
+
+I created a use case class named `ViewAllTasksUseCase` that interacts with the domain layer to retrieve a list of all tasks. This use case follows the callable class principles and interacts with the repository to fetch tasks.
+
 ```dart
-class AddTodoUseCase implements UseCase<Todo, Params<Todo>> {
-  final TodoRepository repository;
+class ViewAllTasksUseCase implements UseCase<List<Task>, NoParams> {
+  final TaskRepository repository;
 
-  AddTodoUseCase({
+  ViewAllTasksUseCase({
     required this.repository,
   });
 
   @override
-  Future<Either<Failure, Todo>> call(Params params) async {
-    return await repository.add(params.data);
+  Future<Dartz.Either<Failure, List<Task>>> call(NoParams params) async {
+    return await repository.getAllTasks();
   }
 }
 ```
+
+#### View Specific Task
+
+I implemented the `ViewTaskUseCase` use case class to retrieve a specific task using its id. This use case accepts a parameter indicating the id of the task to be retrieved and fetches the task from the repository.
+
+```dart
+class ViewTaskUseCase implements UseCase<Task, String> {
+  final TaskRepository repository;
+
+  ViewTaskUseCase({
+    required this.repository,
+  });
+
+  @override
+  Future<Dartz.Either<Failure, Task>> call(String id) async {
+    return await repository.getTask(id);
+  }
+}
+```
+
+#### Create New Task
+
+I implemented the `CreateTaskUseCase` use case class to add a new task to the list of tasks. This use case accepts a `Task` object as a parameter, representing the new task to be created. It adds the new task to the repository.
+
+```dart
+class CreateTaskUseCase implements UseCase<Task, Params<Task>> {
+  final TaskRepository repository;
+
+  CreateTaskUseCase({
+    required this.repository,
+  });
+
+  @override
+  Future<Dartz.Either<Failure, Task>> call(Params<Task> params) async {
+    return await repository.createTask(params.data);
+  }
+}
+```
+</details>
