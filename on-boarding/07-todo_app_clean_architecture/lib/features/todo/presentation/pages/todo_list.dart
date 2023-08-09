@@ -117,18 +117,18 @@ class _TodoListState extends State<TodoList> {
                           ]
                         ),
                         
-                        child: const Row(
+                        child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                     
                           children: [
-                            Text(
+                            const Text(
                               "U",
                               style: TextStyle(
                                 fontSize: 22,
                                 fontWeight: FontWeight.w400,
                                 ),
                               ),
-                            SizedBox(
+                            const SizedBox(
                               width: 120,
                               child: Text(
                                 'UI/UX App Design',
@@ -139,12 +139,30 @@ class _TodoListState extends State<TodoList> {
                                 ),
                                 ),
                             ),
-                            Padding(
-                              padding: EdgeInsets.only(top: 15),
-                              child: Align(
-                                alignment: Alignment.topLeft,
-                                child: Text('April 29, 2023')
+                            Column(
+                              children: [
+                                const Padding(
+                                  padding: EdgeInsets.only(top: 10),
+                                  child: Align(
+                                    alignment: Alignment.topLeft,
+                                    child: Text('April 29, 2023')
+                                    ),
                                 ),
+                                ElevatedButton(onPressed: (){}, 
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: Colors.greenAccent,
+                                    minimumSize: const Size(60, 15),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(5),
+                                    ),
+                                  ),
+                                child: const Text('completed',
+                                    style: TextStyle(
+                                        fontSize: 10,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black)),
+                                )
+                              ],
                             ),
                           ],
                         ),
@@ -194,18 +212,18 @@ class _TodoListState extends State<TodoList> {
                       ]
                     ),
                     
-                    child: const Row(
+                    child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                 
                       children: [
-                        Text(
+                        const Text(
                           "U",
                           style: TextStyle(
                             fontSize: 22,
                             fontWeight: FontWeight.w400,
                             ),
                           ),
-                        SizedBox(
+                        const SizedBox(
                           width: 120,
                           child: Text(
                             'UI/UX App Design',
@@ -216,13 +234,31 @@ class _TodoListState extends State<TodoList> {
                             ),
                             ),
                         ),
-                        Padding(
-                          padding: EdgeInsets.only(top: 15),
-                          child: Align(
-                            alignment: Alignment.topLeft,
-                            child: Text('April 29, 2023')
+                        Column(
+                              children: [
+                                const Padding(
+                                  padding: EdgeInsets.only(top: 10),
+                                  child: Align(
+                                    alignment: Alignment.topLeft,
+                                    child: Text('April 29, 2023')
+                                    ),
+                                ),
+                                ElevatedButton(onPressed: (){}, 
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: Colors.red,
+                                    minimumSize: const Size(60, 15),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(5),
+                                    ),
+                                  ),
+                                child: const Text('pending',
+                                    style: TextStyle(
+                                        fontSize: 10,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white)),
+                                )
+                              ],
                             ),
-                        ),
                       ],
                     ),
                     
@@ -269,18 +305,18 @@ class _TodoListState extends State<TodoList> {
                       ]
                     ),
                     
-                    child: const Row(
+                    child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                 
                       children: [
-                        Text(
+                        const Text(
                           "V",
                           style: TextStyle(
                             fontSize: 22,
                             fontWeight: FontWeight.w400,
                             ),
                           ),
-                        SizedBox(
+                        const SizedBox(
                           width: 120,
                           child: Text(
                             'view candidates',
@@ -291,13 +327,31 @@ class _TodoListState extends State<TodoList> {
                             ),
                             ),
                         ),
-                        Padding(
-                          padding: EdgeInsets.only(top: 15),
-                          child: Align(
-                            alignment: Alignment.topLeft,
-                            child: Text('April 29, 2023')
+                        Column(
+                              children: [
+                                const Padding(
+                                  padding: EdgeInsets.only(top: 10),
+                                  child: Align(
+                                    alignment: Alignment.topLeft,
+                                    child: Text('April 29, 2023')
+                                    ),
+                                ),
+                                ElevatedButton(onPressed: (){}, 
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: Colors.red,
+                                    minimumSize: const Size(60, 15),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(5),
+                                    ),
+                                  ),
+                                child: const Text('pending',
+                                    style: TextStyle(
+                                        fontSize: 10,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white)),
+                                )
+                              ],
                             ),
-                        ),
                       ],
                     ),
                     
@@ -345,18 +399,18 @@ class _TodoListState extends State<TodoList> {
                       ]
                     ),
                     
-                    child: const Row(
+                    child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                 
                       children: [
-                        Text(
+                        const Text(
                           "F",
                           style: TextStyle(
                             fontSize: 22,
                             fontWeight: FontWeight.w400,
                             ),
                           ),
-                        SizedBox(
+                        const SizedBox(
                           width: 120,
                           child: Text(
                             'Football Cu Drybling',
@@ -367,13 +421,31 @@ class _TodoListState extends State<TodoList> {
                             ),
                             ),
                         ),
-                        Padding(
-                          padding: EdgeInsets.only(top: 15),
-                          child: Align(
-                            alignment: Alignment.topLeft,
-                            child: Text('April 29, 2023')
+                        Column(
+                              children: [
+                                const Padding(
+                                  padding: EdgeInsets.only(top: 10),
+                                  child: Align(
+                                    alignment: Alignment.topLeft,
+                                    child: Text('April 29, 2023')
+                                    ),
+                                ),
+                                ElevatedButton(onPressed: (){}, 
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: Colors.greenAccent,
+                                    minimumSize: const Size(60, 15),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(5),
+                                    ),
+                                  ),
+                                child: const Text('completed',
+                                    style: TextStyle(
+                                        fontSize: 10,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black)),
+                                )
+                              ],
                             ),
-                        ),
                       ],
                     ),
                     
