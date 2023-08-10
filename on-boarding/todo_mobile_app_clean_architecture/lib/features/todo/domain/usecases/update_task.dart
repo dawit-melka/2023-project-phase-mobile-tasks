@@ -14,6 +14,6 @@ class UpdateTaskUseCase implements UseCase<Task, Params<Task>> {
 
   @override
   Future<Dartz.Either<Failure, Task>> call(Params<Task> params) async {
-    return await repository.editTask(params.data);
+    return await repository.updateTask(params.data);
   }
 }

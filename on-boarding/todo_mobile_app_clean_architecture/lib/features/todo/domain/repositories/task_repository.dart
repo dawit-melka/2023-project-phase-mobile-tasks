@@ -4,7 +4,7 @@ import 'package:todo_mobile_app_clean_architecture/features/todo/domain/entities
 
 abstract class TaskRepository {
   Future<Dartz.Either<Failure, Task>> createTask(Task task);
-  Future<Dartz.Either<Failure, Task>> editTask(Task task);
+  Future<Dartz.Either<Failure, Task>> updateTask(Task task);
   Future<Dartz.Either<Failure, Task>> deleteTask(Task task);
   Future<Dartz.Either<Failure, Task>> completeTask(Task task);
   Future<Dartz.Either<Failure, Task>> getTask(String id);

@@ -1,24 +1,123 @@
-<<<<<<< HEAD
-# todo_mobile_app_clean_architecture
 
-A new Flutter project.
+# [Day 8 - Task 2] Todo App with Data Source Contracts
 
-## Getting Started
+In this task, the Todo app was extended to include data source contracts, repository dependencies, and a basic repository structure. The focus was on implementing a clear separation between data sources and the repository layer, following the principles discussed in the learning material.
 
-This project is a starting point for a Flutter application.
+## Contract and Repository Implementation
 
-A few resources to get you started if this is your first Flutter project:
+A contract was defined to outline the methods that a repository must fulfill. This contract ensures consistency and a clear API for the repository's interactions with data sources. Below is an example of the contract, as seen in the `task_repository.dart` file:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+```dart
+abstract class TaskRepository {
+  Future<Either<Failure, Task>> createTask(Task task);
+  Future<Either<Failure, Task>> editTask(Task task);
+  Future<Either<Failure, Task>> deleteTask(Task task);
+  Future<Either<Failure, Task>> completeTask(Task task);
+  Future<Either<Failure, Task>> getTask(String id);
+  Future<Either<Failure, List<Task>>> getAllTasks();
+}
+```
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-=======
+### Interfaces and Abstract Classes
+
+Interfaces or abstract classes were introduced to represent repository dependencies. These abstractions provide a clear contract for different data sources, such as remote and local sources. By implementing these interfaces, the app ensures that data sources follow a consistent structure.
+
+### Basic Repository Structure
+
+The basic structure of the repository was established following the contract-defined methods. This structure acts as an intermediary between the domain layer and the data sources. The repository handles data retrieval, modification, and other operations while adhering to the contract.
+
+
+# [Day 8 - Task 1] Task Document: Data Overview Layer
+<details>
+<summary>Click To Expand</summary>
+## Unit Tests for Task Entity
+
+In this task, unit tests were implemented to ensure the correctness of the `Task` entity. The entity contains attributes such as `id`, `title`, `description`, `deadline`, and `status`. The tests validate the behavior of the `Task` entity constructor and its attributes.
+
+```dart
+test('Task entity should be correctly initialized', () {
+  final task = Task(
+    id: '1',
+    title: 'Test Task',
+    description: 'This is a test task',
+    deadline: '2023-08-10',
+    status: false,
+  );
+
+  expect(task.id, '1');
+  expect(task.title, 'Test Task');
+  expect(task.description, 'This is a test task');
+  expect(task.deadline, '2023-08-10');
+  expect(task.status, false);
+});
+```
+
+## Unit Tests for ViewAllTasksUseCase
+
+In this task, unit tests were written for the `ViewAllTasksUseCase` class. The use case is responsible for retrieving a list of all tasks. The tests ensure that the use case interacts correctly with the repository and returns the expected result.
+
+```dart
+test('ViewAllTasksUseCase should return a list of tasks', () async {
+  final mockRepository = MockTodoRepository(); // Create a mock repository
+  final useCase = ViewAllTasksUseCase(repository: mockRepository);
+
+  when(mockRepository.getAllTasks())
+      .thenAnswer((_) async => Right([Task(id: '1', title: 'Task 1')]));
+
+  final result = await useCase(); // Call the use case
+
+  expect(result, isA<Right>());
+  expect(result.getOrElse(() => []), [Task(id: '1', title: 'Task 1')]);
+});
+```
+
+## Implement Models
+
+In this task, models were implemented in the `features/todo/data/models` directory. The `TaskModel` class mirrors the `Task` entity and includes conversion logic to and from JSON using `fromJson` and `toJson` methods. Unit tests were written to ensure the correctness of the `TaskModel` class.
+
+```dart
+class TaskModel {
+  final String id;
+  final String title;
+  final String description;
+  final String deadline;
+  final bool status;
+
+  TaskModel({
+    required this.id,
+    required this.title,
+    required this.description,
+    required this.deadline,
+    this.status = false,
+  });
+
+  factory TaskModel.fromJson(Map<String, dynamic> json) {
+    return TaskModel(
+      id: json['id'],
+      title: json['title'],
+      description: json['description'],
+      deadline: json['deadline'],
+      status: json['status'] ?? false,
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'title': title,
+      'description': description,
+      'deadline': deadline,
+      'status': status,
+    };
+  }
+}
+```
+</details>
+
+
 # [Day 7 - Task 2] To-Do App: Domain Layer Refactoring
-<!-- <details> -->
-<!--   <summary>Entities</summary> -->
+<details>
+<summary>Click To Expand</summary>
   
 In this task, I have successfully completed the domain layer refactoring for the To-Do App. The goal of this task was to implement entities and use cases to enable the functionality of viewing all tasks, viewing a specific task, and creating a new task.
 
@@ -110,5 +209,4 @@ class CreateTaskUseCase implements UseCase<Task, Params<Task>> {
   }
 }
 ```
-<!-- </details> -->
->>>>>>> d0d4178fcd9a34f8022fcc375da6094194de32e8
+</details>
