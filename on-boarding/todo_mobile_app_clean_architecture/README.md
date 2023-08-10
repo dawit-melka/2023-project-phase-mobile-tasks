@@ -1,6 +1,54 @@
+# [Day 9 - Task 1] Todo App with Repository implementation
+
+In this task, the Todo app was further extended to include the repository implementation. The repository acts as an intermediary between the domain layer and the data sources, providing the necessary logic to fulfill the contract-defined methods.
+
+## Repository Implementation
+
+The repository implementation is encapsulated in the `TaskRepositoryImpl` class. This class handles all the operations related to tasks, such as task completion, creation, deletion, and more. The repository is designed to interact with the remote database data source.
+
+Here are snippets from the `task_repository_impl.dart` file that demonstrate the repository implementation:
+
+```dart
+class TaskRepositoryImpl implements TaskRepository {
+  final TaskRemoteDatabase remoteDatabase;
+
+  TaskRepositoryImpl({
+    required this.remoteDatabase,
+  });
+
+  @override
+  Future<Either<Failure, Task>> completeTask(Task task) async {
+    try {
+      final result = await remoteDatabase.completeTask(task);
+      return Right(result);
+    } catch (e) {
+      return Left(Failure("Oops, we couldn't update this task status"));
+    }
+  }
+
+  // ... other methods ...
+
+  @override
+  Future<Either<Failure, List<Task>>> getAllTasks() async {
+    try {
+      final result = await remoteDatabase.getAllTasks();
+      return Right(result);
+    } catch (e) {
+      return Left(Failure("Oops, we couldn't fetch tasks from the database"));
+    }
+  }
+  
+}
+```
+
+### Data Source Interaction
+
+The repository implementation uses the `remoteDatabase` instance to interact with the data source. This instance is injected into the repository during initialization and is responsible for handling data operations with the remote database.
+
 
 # [Day 8 - Task 2] Todo App with Data Source Contracts
-
+<details>
+<summary>Click To Expand</summary>
 In this task, the Todo app was extended to include data source contracts, repository dependencies, and a basic repository structure. The focus was on implementing a clear separation between data sources and the repository layer, following the principles discussed in the learning material.
 
 ## Contract and Repository Implementation
@@ -26,6 +74,7 @@ Interfaces or abstract classes were introduced to represent repository dependenc
 
 The basic structure of the repository was established following the contract-defined methods. This structure acts as an intermediary between the domain layer and the data sources. The repository handles data retrieval, modification, and other operations while adhering to the contract.
 
+</details>
 
 # [Day 8 - Task 1] Task Document: Data Overview Layer
 <details>
