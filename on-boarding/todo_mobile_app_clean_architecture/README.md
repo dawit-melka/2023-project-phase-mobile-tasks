@@ -1,5 +1,35 @@
-# [Day 8 - Task 1] Task Document: Data Overview Layer
 
+# [Day 8 - Task 2] Todo App with Data Source Contracts
+
+In this task, the Todo app was extended to include data source contracts, repository dependencies, and a basic repository structure. The focus was on implementing a clear separation between data sources and the repository layer, following the principles discussed in the learning material.
+
+## Contract and Repository Implementation
+
+A contract was defined to outline the methods that a repository must fulfill. This contract ensures consistency and a clear API for the repository's interactions with data sources. Below is an example of the contract, as seen in the `task_repository.dart` file:
+
+```dart
+abstract class TaskRepository {
+  Future<Either<Failure, Task>> createTask(Task task);
+  Future<Either<Failure, Task>> editTask(Task task);
+  Future<Either<Failure, Task>> deleteTask(Task task);
+  Future<Either<Failure, Task>> completeTask(Task task);
+  Future<Either<Failure, Task>> getTask(String id);
+  Future<Either<Failure, List<Task>>> getAllTasks();
+}
+```
+
+### Interfaces and Abstract Classes
+
+Interfaces or abstract classes were introduced to represent repository dependencies. These abstractions provide a clear contract for different data sources, such as remote and local sources. By implementing these interfaces, the app ensures that data sources follow a consistent structure.
+
+### Basic Repository Structure
+
+The basic structure of the repository was established following the contract-defined methods. This structure acts as an intermediary between the domain layer and the data sources. The repository handles data retrieval, modification, and other operations while adhering to the contract.
+
+
+# [Day 8 - Task 1] Task Document: Data Overview Layer
+<details>
+<summary>Click To Expand</summary>
 ## Unit Tests for Task Entity
 
 In this task, unit tests were implemented to ensure the correctness of the `Task` entity. The entity contains attributes such as `id`, `title`, `description`, `deadline`, and `status`. The tests validate the behavior of the `Task` entity constructor and its attributes.
@@ -82,7 +112,7 @@ class TaskModel {
   }
 }
 ```
-
+</details>
 
 
 # [Day 7 - Task 2] To-Do App: Domain Layer Refactoring
