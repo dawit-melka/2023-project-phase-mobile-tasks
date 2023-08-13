@@ -1,58 +1,60 @@
-// import 'package:add_task_app/get_started.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:todo_mobile_app_clean_architecture/features/todo/presentation/pages/todo_list.dart';
+import 'package:todo_mobile_app_clean_architecture/features/todo/presentation/pages/todo_list_page.dart';
 
-
-
-class GetStartedPage extends StatefulWidget {
+class GetStartedPage extends StatelessWidget {
   const GetStartedPage({super.key});
 
   @override
-  State<GetStartedPage> createState() => _GetStartedPageState();
-}
-
-class _GetStartedPageState extends State<GetStartedPage> {
-  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color.fromRGBO(241, 114, 88, 1),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            SvgPicture.asset(
-              'assets/images/stickman.svg',
+    return Container(
+      decoration: const BoxDecoration(
+        color: Color(0xFFF17258),
+      ),
+      child: Column(
+        children: [
+          const SizedBox(height: 170),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: Image.asset(
+              'assets/images/runner.png',
               height: 350,
             ),
-            const SizedBox(height: 180),
-            Container(
-              margin: const EdgeInsets.symmetric(horizontal: 25),
-              child: ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context, 
-                    MaterialPageRoute(
-                      builder: (context) => const TodoList(),
-                    ),);
-                  // Navigator.pushNamed(context, '/todo-list');
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Color.fromARGB(255, 27, 149, 249),
-                  minimumSize: const Size(270, 50),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(0),
-                  ),
-                ),
-                child: const Text('Get Started',
-                    style: TextStyle(
-                        fontSize: 19,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white)),
-              ),
+          ),
+          const SizedBox(height: 180),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.push(context,
+                      PageRouteBuilder(
+                        transitionDuration: const Duration(milliseconds: 500),
+                        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                          const begin = Offset(1.0, 0.0);
+                          const end = Offset.zero;
+                          const curve = Curves.easeInOut;
+                          var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+                          var offsetAnimation = animation.drive(tween);
+                          return SlideTransition(position: offsetAnimation, child: child);
+                        },
+                        pageBuilder: (context, animation, secondaryAnimation) {
+                          return const TodoListPage(); 
+                        },
+                      ),
+              );
+            },
+            style: ElevatedButton.styleFrom(
+              backgroundColor: const Color.fromARGB(255, 27, 149, 249),
+              minimumSize: const Size(270, 50),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5)),
             ),
-          ],
-        ),
+            child: const Text(
+              "Get Started",
+              style: TextStyle(
+                  fontSize: 19,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white),
+            ),
+          )
+        ],
       ),
     );
   }

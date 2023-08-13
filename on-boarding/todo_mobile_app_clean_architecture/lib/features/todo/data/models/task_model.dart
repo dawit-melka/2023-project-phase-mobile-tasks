@@ -35,3 +35,11 @@ class TaskModel extends Task {
     };
   }
 }
+
+List<TaskModel> tasks = [
+  TaskModel(id:"1", title: "UI/UX App Design", deadline: "April 29, 2023", description: "Complete the UI/UX Design tonight"),
+  TaskModel(id:"2", title: "UI/UX App Design", deadline: "April 29, 2023", description: "Complete the UI/UX Design tonight", status: true),
+  TaskModel(id:"3", title: "View Candidates", deadline: "April 29, 2023", description: "Complete the UI/UX Design tonight", status: true),
+  TaskModel(id:"4", title: "Football Cup Drybiling", deadline: "April 29, 2023", description: "Complete the UI/UX Design tonight"),
+  TaskModel(id:"5", title: "Gym workout", deadline: "April 29, 2023", description: "Complete the UI/UX Design tonight", status: true)
+];
