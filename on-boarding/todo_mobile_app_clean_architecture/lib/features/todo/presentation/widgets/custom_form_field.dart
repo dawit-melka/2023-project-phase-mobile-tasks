@@ -4,7 +4,7 @@ class CustomFormField extends StatelessWidget {
   final Widget child;
   final double height;
 
-  const CustomFormField({
+  const CustomFormField({super.key, 
     required this.child,
     required this.height,
   });

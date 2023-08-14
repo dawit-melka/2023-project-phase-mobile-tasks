@@ -22,12 +22,12 @@ class TaskRepositoryImpl implements TaskRepository {
     }
   }
   @override
-  Future<Dartz.Either<Failure, Task>> completeTask(Task task) async {
+  Future<Dartz.Either<Failure, Task>> updateTask(Task task) async {
     try {
-      final result = await remoteDatabase.completeTask(task);
+      final result = await remoteDatabase.updateTask(task);
       return Dartz.Right(result);
     } catch (e) {
-      return Dartz.Left(Failure("Oops, we couldn't update this task status"));
+      return Dartz.Left(Failure("Oops, we couldn't update this task"));
     }
   }
 
@@ -43,12 +43,22 @@ class TaskRepositoryImpl implements TaskRepository {
   }
 
   @override
-  Future<Dartz.Either<Failure, Task>> updateTask(Task task) async {
+  Future<Dartz.Either<Failure, Task>> completeTask(Task task) async {
     try {
-      final result = await remoteDatabase.updateTask(task);
+      final result = await remoteDatabase.completeTask(task);
       return Dartz.Right(result);
     } catch (e) {
-      return Dartz.Left(Failure("Oops, we couldn't update this task"));
+      return Dartz.Left(Failure("Oops, we couldn't update this task status"));
+    }
+  }
+  
+  @override
+  Future<Dartz.Either<Failure, Task>> getTask(String id) async {
+    try {
+      final result = await remoteDatabase.getTask(id);
+      return Dartz.Right(result);
+    } catch (e) {
+      return Dartz.Left(Failure("Oops, we couldn't find this task"));
     }
   }
 
@@ -62,14 +72,5 @@ class TaskRepositoryImpl implements TaskRepository {
     }
   }
 
-  @override
-  Future<Dartz.Either<Failure, Task>> getTask(String id) async {
-    try {
-      final result = await remoteDatabase.getTask(id);
-      return Dartz.Right(result);
-    } catch (e) {
-      return Dartz.Left(Failure("Oops, we couldn't find this task"));
-    }
-  }
   
 }

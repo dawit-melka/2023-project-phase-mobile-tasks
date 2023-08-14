@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:todo_mobile_app/screens/create_new_task.dart';
+import 'package:todo_mobile_app/screens/create_new_task_page.dart';
 import 'package:todo_mobile_app/models/models.dart';
 import 'package:todo_mobile_app/screens/get_started.dart';
 

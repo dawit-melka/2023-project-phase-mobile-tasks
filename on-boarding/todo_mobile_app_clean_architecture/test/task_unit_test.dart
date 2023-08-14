@@ -5,10 +5,10 @@ void main() {
   group('Task Entity', () {
     test('Creating Task should set attributes correctly', () {
       // Arrange
-      final id = '1';
-      final title = 'Test Task';
-      final description = 'This is a test task';
-      final deadline = 'August 10, 2023 10:00 AM';
+      const id = '1';
+      const title = 'Test Task';
+      const description = 'This is a test task';
+      const deadline = 'August 10, 2023 10:00 AM';
 
       // Act
       final task = Task(
@@ -27,7 +27,7 @@ void main() {
 
     test('Two tasks with the same id should be considered equal', () {
       // Arrange
-      final id = '1';
+      const id = '1';
       final task1 = Task(
         id: id,
         title: 'Task 1',

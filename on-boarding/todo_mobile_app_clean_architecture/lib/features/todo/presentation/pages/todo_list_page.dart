@@ -90,7 +90,7 @@ class _TodoListPageState extends State<TodoListPage> {
                     );
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Color.fromRGBO(241, 114, 88, 1),
+                    backgroundColor: const Color.fromRGBO(241, 114, 88, 1),
                     minimumSize: const Size(250, 40),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(5),

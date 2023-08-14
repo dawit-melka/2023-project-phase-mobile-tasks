@@ -59,6 +59,7 @@ class _TaskDetailPageState extends State<TaskDetailPage> {
                     Icon(
                       Icons.edit,
                       size: 16,
+                      color: Colors.black,
                     ),
                     SizedBox(
                       width: 5,
@@ -77,6 +78,7 @@ class _TaskDetailPageState extends State<TaskDetailPage> {
                     Icon(
                       Icons.delete,
                       size: 16,
+                      color: Colors.black,
                     ),
                     SizedBox(
                       width: 5,

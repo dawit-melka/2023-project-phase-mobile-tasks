@@ -15,7 +15,7 @@ class TaskListCards extends StatelessWidget {
       children: List.generate(tasks.length, (index) {
         return Slidable(
           endActionPane: ActionPane(
-            motion: BehindMotion(),
+            motion: const BehindMotion(),
             extentRatio: 0.25,
             
             children: [
@@ -23,7 +23,7 @@ class TaskListCards extends StatelessWidget {
                 autoClose: true,
                 flex: 2,
                 onPressed: (BuildContext context){},
-                backgroundColor: Color.fromRGBO(229, 115, 115, 1),
+                backgroundColor: const Color.fromRGBO(229, 115, 115, 1),
                 foregroundColor: Colors.white,
                 icon: Icons.delete,
                 label: 'Delete',

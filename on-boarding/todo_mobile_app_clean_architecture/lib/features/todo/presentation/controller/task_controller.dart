@@ -11,6 +11,4 @@ class TaskController extends GetxController {
   Future<void> createTask() async {
     print("Title is ${titleController.text.trim()} and description: ${descriptionController.text.trim()}");
   }
-
-
 }
