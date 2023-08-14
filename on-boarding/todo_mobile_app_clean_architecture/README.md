@@ -1,6 +1,56 @@
+# [Day 9 - Task 1] Todo App Repository Implementation 
+## Overview
+This task involved implementing repository functionality for a Todo app using Flutter. The primary objective was to set up a basic structure for the repository, implement logic based on the repository contracts from the domain layer, and integrate repository dependencies, including local and remote data sources.
+
+## Task Description
+The task required the following key steps:
+
+Implement a TaskRepository interface based on the defined contract from the domain layer.
+Create the TaskRepositoryImpl class, which implements the TaskRepository interface.
+Integrate repository dependencies, including TaskRemoteDatabase for remote data interaction.
+Implementation
+TaskRepository Interface
+The TaskRepository interface was defined as per the contract provided in the domain layer. It included methods such as createTask, updateTask, deleteTask, completeTask, getTask, and getAllTasks.
+
+## TaskRepositoryImpl Implementation
+The TaskRepositoryImpl class was created to implement the repository functionality. It accepted an instance of TaskRemoteDatabase as a dependency and utilized it to interact with the remote data source.
+
+For each repository method, appropriate try-catch blocks were implemented to handle potential failures and return appropriate responses using Dartz.Either<Failure, T>. This ensured proper error handling and a clear separation of concerns.
+
+## Code Structure
+The codebase was organized following best practices for clean architecture and modularity. The relevant files were organized within the respective folders:
+
+features/todo/data/repositories for repository implementation.
+features/todo/data/datasource for remote data source (TaskRemoteDatabase).
+core/errors for error handling (Failure class).
+
+### Snippets of Code
+```dart
+class TaskRepositoryImpl implements TaskRepository {
+  final TaskRemoteDatabase remoteDatabase;
+
+  TaskRepositoryImpl({
+    required this.remoteDatabase,
+  });
+
+  @override
+  Future<Dartz.Either<Failure, Task>> createTask(Task task) async {
+    try {
+      final result = await remoteDatabase.createTask(task);
+      return Dartz.Right(result);
+    } catch (e) {
+      return Dartz.Left(Failure("Oops, we couldn't add this task"));
+    }
+  }
+
+  // other repository methods...
+}
+```
 
 # [Day 8 - Task 2] Todo App with Data Source Contracts
-
+<details>
+<summary>Click To Expand</summary>
+  
 In this task, the Todo app was extended to include data source contracts, repository dependencies, and a basic repository structure. The focus was on implementing a clear separation between data sources and the repository layer, following the principles discussed in the learning material.
 
 ## Contract and Repository Implementation
@@ -25,7 +75,7 @@ Interfaces or abstract classes were introduced to represent repository dependenc
 ### Basic Repository Structure
 
 The basic structure of the repository was established following the contract-defined methods. This structure acts as an intermediary between the domain layer and the data sources. The repository handles data retrieval, modification, and other operations while adhering to the contract.
-
+</details>
 
 # [Day 8 - Task 1] Task Document: Data Overview Layer
 <details>
