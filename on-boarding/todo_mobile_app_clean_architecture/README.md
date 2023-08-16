@@ -4,15 +4,7 @@
 
 In this task, the objective was to enhance the code organization and reusability of the Todo List app by focusing on the presentation layer. The primary focus was on reorganizing the UI components, implementing reusability through widgets, and ensuring a well-structured and maintainable codebase.
 
-### Code Organization and Refactoring
 
-To improve code organization and maintainability, the following steps were taken:
-
-1. **Identifying Code Duplication:** Identified areas of code duplication within the presentation layer of the app. This included redundant UI elements, similar layouts, and repetitive code blocks.
-
-2. **Reorganizing Widgets:** Introduced a modular structure by creating separate widget classes for reusable UI components. This modular approach ensured that similar UI elements were encapsulated within individual widgets.
-
-3. **Folder Structure Enhancement:** Arranged the widgets into appropriate folders, such as `pages/`, `widgets/`, and `controller/`, to maintain a clear separation of concerns. This structure allowed for easier navigation and code maintenance.
 
 ### Naming Conventions and Folder Structure
 
@@ -71,6 +63,16 @@ lib/
 |-- ... (other files)
 
 ```
+### Code Organization and Refactoring
+
+To improve code organization and maintainability, the following steps were taken:
+
+1. **Identifying Code Duplication:** Identified areas of code duplication within the presentation layer of the app. This included redundant UI elements, similar layouts, and repetitive code blocks.
+
+2. **Reorganizing Widgets:** Introduced a modular structure by creating separate widget classes for reusable UI components. This modular approach ensured that similar UI elements were encapsulated within individual widgets.
+
+3. **Folder Structure Enhancement:** Arranged the widgets into appropriate folders, such as `pages/`, `widgets/`, and `controller/`, to maintain a clear separation of concerns. This structure allowed for easier navigation and code maintenance.
+
 ### Reusability through Widgets
 
 The reusability of the presentation layer was achieved through the creation of reusable widgets:
