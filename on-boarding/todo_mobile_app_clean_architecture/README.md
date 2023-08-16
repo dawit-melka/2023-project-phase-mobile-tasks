@@ -1,5 +1,97 @@
+## [Day 10 - Task 2] Implement Code Organization and Reusability in the Todo List App
+
+## Overview
+
+In this task, the objective was to enhance the code organization and reusability of the Todo List app by focusing on the presentation layer. The primary focus was on reorganizing the UI components, implementing reusability through widgets, and ensuring a well-structured and maintainable codebase.
+
+### Code Organization and Refactoring
+
+To improve code organization and maintainability, the following steps were taken:
+
+1. **Identifying Code Duplication:** Identified areas of code duplication within the presentation layer of the app. This included redundant UI elements, similar layouts, and repetitive code blocks.
+
+2. **Reorganizing Widgets:** Introduced a modular structure by creating separate widget classes for reusable UI components. This modular approach ensured that similar UI elements were encapsulated within individual widgets.
+
+3. **Folder Structure Enhancement:** Arranged the widgets into appropriate folders, such as `pages/`, `widgets/`, and `controller/`, to maintain a clear separation of concerns. This structure allowed for easier navigation and code maintenance.
+
+### Naming Conventions and Folder Structure
+
+Adhere to consistent naming conventions for variables, functions, classes, and files. Organize your project's folder structure in a clean architecture manner.
+```
+lib/
+|-- core/
+|   |-- errors/
+|   |   |- failure.dart
+|   |-- network/
+|   |   |-- network_info.dart
+|   |-- utils/
+|   |   |-- usecase.dart
+|   |   |
+|-- features/
+|   |-- todo/
+|   |   |-- data/
+|   |   |   |-- datasources/
+|   |   |   |   |-- task_remote_database.dart
+|   |   |   |
+|   |   |   |-- repositories/
+|   |   |   |   |-- todo_repository_impl.dart
+|   |   |   |
+|   |   |   |-- models/
+|   |   |   |   |-- task_model.dart
+|   |   |
+|   |   |-- domain/
+|   |   |   |-- entities/
+|   |   |   |   |-- task.dart
+|   |   |   |
+|   |   |   |-- repositories/
+|   |   |   |   |-- task_repository.dart
+|   |   |   |
+|   |   |   |-- usecases/
+|   |   |   |   |-- create_task.dart
+|   |   |   |   |-- delete_task.dart
+|   |   |   |   |-- update_task.dart
+|   |   |   |   |-- view_all_tasks.dart
+|   |   |   |   |-- view_task.dart
+|   |   |
+|   |   |-- presentation/
+|   |   |   |-- controller/
+|   |   |   |   |-- task_controller.dart
+|   |   |   |-- pages/
+|   |   |   |   |-- get_started.dart
+|   |   |   |   |-- todo_list_page.dart
+|   |   |   |   |-- task_detail_page.dart
+|   |   |   |   |-- create_new_task_page.dart
+|   |   |   |-- widgets/
+|   |   |   |   |-- create_new_task_form.dart
+|   |   |   |   |-- custom_form_field.dart
+|   |   |   |   |-- task_list_card.dart
+|   |   |
+|   |
+|-- main.dart
+|-- ... (other files)
+
+```
+### Reusability through Widgets
+
+The reusability of the presentation layer was achieved through the creation of reusable widgets:
+
+1. **Reusable UI Components:** Designed widgets that encapsulate specific UI components like buttons, input fields, list items, and more. These widgets were designed to be flexible and adaptable, allowing them to be reused across different parts of the app.
+
+2. **Widget Customization:** Implemented widget customization through parameters and properties. This approach enabled the same widget to be customized and utilized in various contexts without rewriting code.
+
+3. **Composition of Widgets:** Composed larger UI sections by combining multiple reusable widgets. This composability approach enhanced code readability and reduced the need for repetitive coding.
+
+### Integration and Functionality
+
+While reorganizing and refactoring the presentation layer, it was ensured that the app's existing features remained fully functional:
+
+**Seamless Integration:** The new widget-based approach seamlessly integrated with the existing app structure. The reorganized codebase enhanced the app's performance and maintainability.
+
+
 ## [Day 9 - Task 2] Network Info Tak
 
+<details>
+<summary>Click To Expand</summary>
 ## Overview
 
 This repository contains the implementation of a NetworkInfo class and its integration into the TODO mobile app. The app is designed to manage tasks, including adding, updating, and deleting items from the TODO list. The NetworkInfo class enhances the app's functionality by determining the presence or absence of a network connection, providing a more robust task management experience.
@@ -62,7 +154,7 @@ class TaskRepositoryImpl implements TaskRepository {
   // Other repository methods follow a similar pattern
 }
 ```
-
+</details>
 
 ## [Day 9 - Task 1] Todo App Repository Implementation 
 <details>
