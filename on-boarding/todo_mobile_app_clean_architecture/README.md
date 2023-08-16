@@ -115,7 +115,9 @@ class TaskRepositoryImpl implements TaskRepository {
 }
 ```
 </details>
+
 ## [Day 8 - Task 2] Todo App with Data Source Contracts
+
 <details>
 <summary>Click To Expand</summary>
   
