@@ -17,6 +17,26 @@ class Task {
     });
 
 
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is Task &&
+          runtimeType == other.runtimeType &&
+          id == other.id &&
+          title == other.title &&
+          description == other.description &&
+          deadline == other.deadline &&
+          status == other.status;
+
+  @override
+  int get hashCode =>
+      id.hashCode ^
+      title.hashCode ^
+      description.hashCode ^
+      deadline.hashCode ^
+      status.hashCode;
+
+
   // Map<String, dynamic> toMap() {
   //   final result = <String, dynamic>{};
   

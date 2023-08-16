@@ -1,21 +1,25 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:dartz/dartz.dart' as Dartz;
+import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:todo_mobile_app_clean_architecture/core/errors/failure.dart';
 import 'package:todo_mobile_app_clean_architecture/core/utils/usecase.dart';
 import 'package:todo_mobile_app_clean_architecture/features/todo/domain/entities/task.dart';
 import 'package:todo_mobile_app_clean_architecture/features/todo/domain/repositories/task_repository.dart';
 import 'package:todo_mobile_app_clean_architecture/features/todo/domain/usecases/view_all_tasks.dart';
-
-class MockTodoRepository extends Mock implements TaskRepository {}
+import 'view_all_tasks_use_case_unit_test.mocks.dart';
+@GenerateNiceMocks([
+  MockSpec<TaskRepository>()
+])
 
 void main() {
+
   group('ViewAllTasksUseCase', () {
     late ViewAllTasksUseCase useCase;
-    late MockTodoRepository mockRepository;
+    late MockTaskRepository mockRepository;
 
     setUp(() {
-      mockRepository = MockTodoRepository();
+      mockRepository = MockTaskRepository();
       useCase = ViewAllTasksUseCase(repository: mockRepository);
     });
 
@@ -40,7 +44,7 @@ void main() {
           .thenAnswer((_) async => Dartz.Right(tasks));
 
       // Act
-      final result = await useCase(NoParams as NoParams);
+      final result = await useCase(NoParams());
 
       // Assert
       expect(result, equals(Dartz.Right(tasks)));
@@ -55,7 +59,7 @@ void main() {
           .thenAnswer((_) async => Dartz.Left(failure));
 
       // Act
-      final result = await useCase(NoParams as NoParams);
+      final result = await useCase(NoParams());
 
       // Assert
       expect(result, equals(Dartz.Left(failure)));

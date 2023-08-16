@@ -12,6 +12,6 @@ class Params<T> {
 }
 
 class NoParams {
-  final void data;
-  NoParams(this.data);
+  // final void data;
+  // NoParams(this.data);
 }
