@@ -1,4 +1,72 @@
-# [Day 9 - Task 1] Todo App Repository Implementation 
+## [Day 9 - Task 2] Network Info Tak
+
+## Overview
+
+This repository contains the implementation of a NetworkInfo class and its integration into the TODO mobile app. The app is designed to manage tasks, including adding, updating, and deleting items from the TODO list. The NetworkInfo class enhances the app's functionality by determining the presence or absence of a network connection, providing a more robust task management experience.
+
+## Features and Enhancements
+
+### NetworkInfo Class
+
+The `NetworkInfo` class has been implemented to determine the network connectivity status. It abstracts the process of checking for an active network connection and provides a unified way to access this information throughout the app.
+
+```dart
+abstract class NetworkInfo {
+  Future<bool> get isConnected;
+}
+```
+
+### NetworkInfoImpl Class
+
+The `NetworkInfoImpl` class implements the `NetworkInfo` interface and uses the `InternetConnectionChecker` package to check for network connectivity. This class is responsible for determining whether the device is connected to the internet.
+
+```dart
+class NetworkInfoImpl implements NetworkInfo {
+  final InternetConnectionChecker connectionChecker;
+
+  NetworkInfoImpl(this.connectionChecker);
+
+  @override
+  Future<bool> get isConnected => connectionChecker.hasConnection;
+}
+```
+
+### Repository Integration
+
+The `NetworkInfo` instance is injected into the repository to enable network-aware operations. The repository can now utilize the `NetworkInfo` instance to check for network connectivity before proceeding with network-dependent operations.
+
+```dart
+class TaskRepositoryImpl implements TaskRepository {
+  final NetworkInfo networkInfo;
+  final TaskRemoteDatabase remoteDatabase;
+
+  TaskRepositoryImpl({
+    required this.networkInfo,
+    required this.remoteDatabase,
+  });
+
+  @override
+  Future<Either<Failure, Task>> createTask(Task task) async {
+    if (await networkInfo.isConnected) {
+      try {
+        final result = await remoteDatabase.createTask(task);
+        return Right(result);
+      } catch (e) {
+        return Left(Failure("Oops, we couldn't add this task"));
+      }
+    } else {
+      return Left(Failure("No internet connection available"));
+    }
+  }
+  
+  // Other repository methods follow a similar pattern
+}
+```
+
+
+## [Day 9 - Task 1] Todo App Repository Implementation 
+<details>
+<summary>Click To Expand</summary>
 ## Overview
 This task involved implementing repository functionality for a Todo app using Flutter. The primary objective was to set up a basic structure for the repository, implement logic based on the repository contracts from the domain layer, and integrate repository dependencies, including local and remote data sources.
 
@@ -46,8 +114,8 @@ class TaskRepositoryImpl implements TaskRepository {
   // other repository methods...
 }
 ```
-
-# [Day 8 - Task 2] Todo App with Data Source Contracts
+</details>
+## [Day 8 - Task 2] Todo App with Data Source Contracts
 <details>
 <summary>Click To Expand</summary>
   
@@ -77,7 +145,7 @@ Interfaces or abstract classes were introduced to represent repository dependenc
 The basic structure of the repository was established following the contract-defined methods. This structure acts as an intermediary between the domain layer and the data sources. The repository handles data retrieval, modification, and other operations while adhering to the contract.
 </details>
 
-# [Day 8 - Task 1] Task Document: Data Overview Layer
+## [Day 8 - Task 1] Task Document: Data Overview Layer
 <details>
 <summary>Click To Expand</summary>
 ## Unit Tests for Task Entity
@@ -165,7 +233,7 @@ class TaskModel {
 </details>
 
 
-# [Day 7 - Task 2] To-Do App: Domain Layer Refactoring
+## [Day 7 - Task 2] To-Do App: Domain Layer Refactoring
 <details>
 <summary>Click To Expand</summary>
   
