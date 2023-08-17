@@ -1,7 +1,6 @@
 import 'package:dartz/dartz.dart' as Dartz;
 import 'package:todo_mobile_app_clean_architecture/core/errors/failure.dart';
 import 'package:todo_mobile_app_clean_architecture/features/todo/domain/entities/task.dart';
-import 'package:todo_mobile_app_clean_architecture/core/network/network_info.dart';
 
 abstract class TaskRepository {
   Future<Dartz.Either<Failure, Task>> createTask(Task task);
