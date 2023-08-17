@@ -1,5 +1,134 @@
+## [Day 12 - Task 1] Todo App BLoC State Management
+
+This README provides an overview of the BLoC state management implementation for the Todo app. The BLoC pattern is used to manage the UI state, handle business logic, and process user interactions.
+
+## Event Classes
+
+Event classes represent different user actions that trigger changes in the app's state. These events guide the logic of the BLoC. The following event classes have been defined:
+
+- **TaskInitialEvent**: Represents the initial event.
+- **CreateTaskEvent**: Dispatched when the user wants to create a new task.
+- **UpdateTaskEvent**: Dispatched when the user wants to update a task's details.
+- **DeleteTaskEvent**: Dispatched when the user wants to delete a task.
+- **GetSingleTaskEvent**: Dispatched when the user wants to retrieve a single task using its ID.
+- **LoadAllTasksEvent**: Dispatched when the user wants to load all tasks from the repository.
+
+```dart
+// todo_event.dart
+
+// Define event classes for different user actions
+part of 'todo_bloc.dart';
+
+@immutable
+sealed class TodoEvent {}
+
+class TaskInitialEvent extends TodoEvent {}
+
+class CreateTaskEvent extends TodoEvent {
+  final Task task;
+
+  CreateTaskEvent({required this.task});
+}
+
+// ... Other event classes
+
+```
+
+## State Classes
+
+State classes represent the various UI states that the app can be in. These states dictate how the UI should behave based on user interactions and data updates. The following state classes have been defined:
+
+- **TodoInitial**: Represents the initial state before any data is loaded.
+- **LoadingState**: Indicates that the app is currently fetching data.
+- **LoadedAllTasksState**: Represents the state where all tasks are successfully loaded from the repository.
+- **LoadedSingleTaskState**: Represents the state where a single task is successfully retrieved.
+- **ErrorState**: Indicates that an error has occurred during data retrieval or processing.
+
+```dart
+// todo_state.dart
+
+// Define state classes representing UI states
+part of 'todo_bloc.dart';
+
+@immutable
+sealed class TodoState {}
+
+class TodoInitial extends TodoState {}
+
+class LoadingState extends TodoState {}
+
+class LoadedAllTasksState extends TodoState {
+  final List<Task> tasks;
+
+  LoadedAllTasksState({required this.tasks});
+}
+
+class LoadedSingleTaskState extends TodoState {
+  final Task task;
+  final List<Task> tasks;
+
+  LoadedSingleTaskState({required this.task, required this.tasks});
+}
+
+class ErrorState extends TodoState {}
+
+```
+
+## TodoBloc
+
+The `TodoBloc` class is the core component responsible for handling the business logic, processing events, and emitting states. It is set up to handle various events such as creating, updating, deleting tasks, loading tasks, and more.
+
+The BLoC's primary responsibilities include:
+
+- Mapping events to corresponding state changes using the `mapEventToState` method.
+- Implementing logic for each event, interacting with the provided use cases and transforming states accordingly.
+- Utilizing Streams to emit the appropriate states based on the logic and events processed.
+- Ensuring proper error handling for events that could result in failures, and emitting the `ErrorState` when necessary.
+
+The BLoC is properly integrated into the app's components to manage the UI state effectively.
+
+```dart
+// todo_bloc.dart
+
+// Implement the TodoBloc class
+class TodoBloc extends Bloc<TodoEvent, TodoState> {
+  TodoBloc() : super(TodoInitial()) {
+    on<TaskInitialEvent>(taskInitialEvent);
+    on<CreateTaskEvent>(createTaskEvent);
+    on<UpdateTaskEvent>(updateTaskEvent);
+    on<DeleteTaskEvent>(deleteTaskEvent);
+    on<GetSingleTaskEvent>(getSingleTaskEvent);
+    on<LoadAllTasksEvent>(loadAllTasksEvent);
+  }
+
+  // ... Event handlers
+
+  FutureOr<void> createTaskEvent(
+      CreateTaskEvent event, Emitter<TodoState> emit) {
+    try {
+      // Perform the task creation logic using the CreateTaskUseCase
+      // Check the result and emit appropriate states
+      final state = this.state;
+      if (state is LoadedAllTasksState) {
+        emit(LoadedAllTasksState(tasks: List.from(state.tasks)..add(event.task)));
+      }
+    } catch(e) {
+      // Handle unexpected exceptions and emit an error state
+      emit(ErrorState());
+    }
+  }
+
+  // ... Other event handlers
+}
+
+```
+
+
+
 ## [Day 10 - Task 2] Implement Code Organization and Reusability in the Todo List App
 
+<details>
+<summary>Click To Expand</summary>
 ## Overview
 
 In this task, the objective was to enhance the code organization and reusability of the Todo List app by focusing on the presentation layer. The primary focus was on reorganizing the UI components, implementing reusability through widgets, and ensuring a well-structured and maintainable codebase.
@@ -89,6 +218,7 @@ While reorganizing and refactoring the presentation layer, it was ensured that t
 
 **Seamless Integration:** The new widget-based approach seamlessly integrated with the existing app structure. The reorganized codebase enhanced the app's performance and maintainability.
 
+</details?
 
 ## [Day 9 - Task 2] Network Info Tak
 
