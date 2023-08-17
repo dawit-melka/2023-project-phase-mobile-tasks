@@ -218,7 +218,7 @@ While reorganizing and refactoring the presentation layer, it was ensured that t
 
 **Seamless Integration:** The new widget-based approach seamlessly integrated with the existing app structure. The reorganized codebase enhanced the app's performance and maintainability.
 
-</details?
+</details>
 
 ## [Day 9 - Task 2] Network Info Tak
 
