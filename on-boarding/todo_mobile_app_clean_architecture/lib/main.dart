@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:todo_mobile_app_clean_architecture/features/todo/presentation/pages/get_started.dart';
-import 'package:todo_mobile_app_clean_architecture/features/todo/presentation/pages/task_detail_page.dart';
 
 import 'features/todo/presentation/pages/create_new_task_page.dart';
+import 'features/todo/presentation/pages/get_started.dart';
+import 'features/todo/presentation/pages/task_detail_page.dart';
 import 'features/todo/presentation/pages/todo_list_page.dart';
+import 'injection_container.dart' as di;
 
-
-void main() {
+void main() async{
+  await di.init();
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     title: "Todo Mobile App",

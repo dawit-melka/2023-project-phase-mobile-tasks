@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:todo_mobile_app_clean_architecture/features/todo/presentation/pages/todo_list_page.dart';
+import 'todo_list_page.dart';
 
 class GetStartedPage extends StatelessWidget {
   const GetStartedPage({super.key});

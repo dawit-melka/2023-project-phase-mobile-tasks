@@ -1,7 +1,7 @@
 
 
 
-import 'package:todo_mobile_app_clean_architecture/features/todo/domain/entities/task.dart';
+import '../../domain/entities/task.dart';
 
 abstract class TaskRemoteDatabase{
   Future<Task> createTask(Task task);

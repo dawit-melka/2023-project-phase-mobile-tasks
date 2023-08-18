@@ -1,16 +1,15 @@
 
 import 'package:dartz/dartz.dart' as Dartz;
-import 'package:todo_mobile_app_clean_architecture/core/errors/failure.dart';
-import 'package:todo_mobile_app_clean_architecture/core/utils/usecase.dart';
-import 'package:todo_mobile_app_clean_architecture/features/todo/domain/entities/task.dart';
-import 'package:todo_mobile_app_clean_architecture/features/todo/domain/repositories/task_repository.dart';
+
+import '../../../../core/errors/failure.dart';
+import '../../../../core/usecases/usecase.dart';
+import '../entities/task.dart';
+import '../repositories/task_repository.dart';
 
 class CreateTaskUseCase implements UseCase<Task, Params<Task>> {
   final TaskRepository repository;
 
-  CreateTaskUseCase({
-    required this.repository,
-  });
+  CreateTaskUseCase(this.repository);
 
   @override
   Future<Dartz.Either<Failure, Task>> call(Params<Task> params) async {
