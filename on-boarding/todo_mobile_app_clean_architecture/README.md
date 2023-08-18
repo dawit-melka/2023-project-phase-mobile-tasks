@@ -1,5 +1,79 @@
+# Todo Mobile App 
+## Screen Shots
+
+<img width="200" height="450" src="https://github.com/dawit-melka/2023-project-phase-mobile-tasks/assets/105089130/d21a50ec-76ea-4439-9642-777baef8f133">
+
+<img width="200" height="450" src="https://github.com/dawit-melka/2023-project-phase-mobile-tasks/assets/105089130/c5b61354-c48a-4ce1-9714-09dc6a59cdaf">
+
+<img width="200" height="450" src="https://github.com/dawit-melka/2023-project-phase-mobile-tasks/assets/105089130/c2ddc79c-4343-4163-ac40-ca21e07015bd">
+
+<img width="200" height="450" src="https://github.com/dawit-melka/2023-project-phase-mobile-tasks/assets/105089130/807f241f-cfd1-4f45-b1a6-6c1255aabfd4">
+
+
+## [Day 13 - Task 1] Todo App Dependency Injection
+
+This README provides an overview of the dependency injection setup for the Todo app. Dependency injection is a design pattern used to manage and provide dependencies to different parts of the application. The `get_it` library is used to handle dependency injection in the app.
+
+## Setup
+
+The dependency injection is configured using the `injection_container.dart` file. This file contains the setup for all the dependencies used in the app, including BLoCs, use cases, network-related components, and more.
+
+### Features - Todo App
+
+#### Bloc
+
+The Todo BLoC is registered using the `sl.registerFactory` method. This registration allows the BLoC to be instantiated and managed by the dependency injection container.
+
+```dart
+sl.registerFactory(() => TodoBloc());
+```
+
+#### Use Cases
+
+Various use cases for the Todo app, such as creating, updating, deleting, and viewing tasks, are registered as singletons. These use cases are essential for implementing the business logic of the app.
+
+```dart
+sl.registerSingleton(() => CreateTaskUseCase(sl()));
+sl.registerSingleton(() => UpdateTaskUseCase(sl()));
+sl.registerSingleton(() => DeleteTaskUseCase(sl()));
+sl.registerSingleton(() => ViewTaskUseCase(sl()));
+sl.registerSingleton(() => ViewAllTasksUseCase(sl()));
+```
+
+### Core
+
+#### Network Info
+
+The `NetworkInfo` class, responsible for checking network connectivity, is registered as a lazy singleton using the `sl.registerLazySingleton` method.
+
+```dart
+sl.registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl(sl()));
+```
+
+### External
+
+External dependencies such as the HTTP client and `InternetConnectionChecker` are registered as lazy singletons as well.
+
+```dart
+sl.registerLazySingleton(() => http.Client());
+sl.registerLazySingleton(() => InternetConnectionChecker());
+```
+
+## Initialization
+
+In the `main.dart` file, the `init` function from the `injection_container.dart` file is called to initialize the dependency injection container before the app is run.
+
+```dart
+void main() async {
+  await di.init();
+  runApp(MyApp());
+}
+```
+
 ## [Day 12 - Task 1] Todo App BLoC State Management
 
+<details>
+<summary>Click To Expand</summary>
 This README provides an overview of the BLoC state management implementation for the Todo app. The BLoC pattern is used to manage the UI state, handle business logic, and process user interactions.
 
 ## Event Classes
@@ -122,7 +196,7 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
 }
 
 ```
-
+</details>
 
 
 ## [Day 10 - Task 2] Implement Code Organization and Reusability in the Todo List App
