@@ -1,7 +1,7 @@
 # Todo Mobile App 
 ## Screen Shots
 
-<img width="200" height="450" src="https://github.com/dawit-melka/2023-project-phase-mobile-tasks/assets/105089130/d21a50ec-76ea-4439-9642-777baef8f133">
+<img width="200" height="450" src="https://github.com/dawit-melka/2023-project-phase-mobile-tasks/assets/105089130/6318d7fb-4d5f-4909-a4a6-449b0c154370">
 
 <img width="200" height="450" src="https://github.com/dawit-melka/2023-project-phase-mobile-tasks/assets/105089130/c5b61354-c48a-4ce1-9714-09dc6a59cdaf">
 
